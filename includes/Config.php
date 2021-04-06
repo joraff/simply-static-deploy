@@ -19,4 +19,14 @@ class Config
         }
         return $out;
     }
+    
+    public function getDestination()
+    {
+        $bucket = $this->data['bucket'];
+        if ( is_multisite() )
+        {
+            return $bucket.get_blog_details()->path;
+        }
+        return $bucket;
+    }
 }
